@@ -1,0 +1,46 @@
+.grd-no-gap{
+  gap: 0;
+}
+.local-img-wdth{
+    width: 6rem
+}
+.img-selected{
+    width: 6rem;
+}
+.block4{
+  border-radius: 8px;
+  background-color: rgb(55, 56, 53, 0.2);
+  width: 80%;
+  height: 6rem;
+  /* cambiar height- no es global, el 6rem le sirve al block 4 de Deposito */
+  padding: 3rem;
+}
+.block5{
+  width: 90%;
+  border-radius: 1rem;
+  background-color: beige;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  height: auto;
+  overflow: hidden;
+}
+.block6{
+  background-color: rgb(55, 56, 53, 0.2);
+  position: relative;
+  width: 100%;
+}
+.block7{
+  height: 4rem;
+}
+.grid-dual{
+  grid-template-columns: 50% 50%;
+}
+.flx-end{
+  justify-content: flex-end;
+}
+.flx-start{
+  justify-content: flex-start;
+}
+.wht-text{
+  color: white;
+}
+

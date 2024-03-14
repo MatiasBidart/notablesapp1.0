@@ -1,0 +1,24 @@
+.frst-block{
+  background-color: rgb(143, 207, 46);
+  border-radius: 0.7rem;
+  height: 100%;
+  margin: 0 1rem;
+  opacity: .9;
+}
+.frst-block:hover{
+  opacity: 0.6;
+  cursor:cell
+}
+
+#grd-home{
+  grid-auto-rows:100%;
+  grid-template-rows: 3rem auto 16rem;
+}
+#grd-home:first-child{
+  margin-top: 0.5rem;
+}
+
+.grd-clmns-rspnsv{
+  grid-auto-rows: 16rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}

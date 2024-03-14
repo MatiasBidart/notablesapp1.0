@@ -1,0 +1,7 @@
+.grd-prdcts{
+    grid-auto-rows: auto auto;
+}
+.mrgn-1rem{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
