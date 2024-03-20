@@ -8,11 +8,6 @@ const Pedido = ({classes}) => {
   {id:3, name:'Panceta Ahumada', quantityAsked: '3', quantityDelivered:'', img:'https://autoservicioelisa.com.ar/wp-content/uploads/2021/02/ELISA-86.jpg'}
 ]
 // ----------------------------
-axios.get('https://boilerplate1-1.onrender.com/api/v1/pedido')
-    .then(response => console.log(response.data))
-    .catch(err => console.log(err.message))
-
-  console.log(new Date())
   return (
     <div className={classes}>
         <div className='block6'>Hola! soy el Pedido</div>

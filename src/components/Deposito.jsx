@@ -1,13 +1,15 @@
+// Importaciones 💥
 import './stylesheets/deposito.css'
 import './stylesheets/globalStyles.css'
+// Funcionalidades 💯
 import React from 'react'
-import { useAPI } from '../useAPI.js'
+// Componentes 💢
 import LocalRender from './LocalRender.jsx'
 import Pedido from './Pedido.jsx'
+import { useAPI } from '../useAPI.js'
 
 
 const Deposito = () => {
-  const {data} = useAPI('https://boilerplate1-1.onrender.com/api/v1/products')
   const arrayLocals = [
     {id: 1, name:'El Federal', img:'https://www.losnotables.com.ar/wp-content/themes/notables-theme/archivos/img/bares/logos/bar-el-federal-footer.png'},
     {id: 2, name:'Margot', img:'https://www.losnotables.com.ar/wp-content/themes/notables-theme/archivos/img/bares/logos/cafe-margot-footer.png'},
@@ -15,7 +17,7 @@ const Deposito = () => {
     {id: 4, name:'Celta', img:'https://www.losnotables.com.ar/wp-content/themes/notables-theme/archivos/img/bares/logos/celta-bar-footer.png'},
     {id: 5, name:'Poesía', img:'https://www.losnotables.com.ar/wp-content/themes/notables-theme/archivos/img/bares/logos/cafe-la-poesia-footer.png'}
 ]
-
+  const productData = useAPI('https://boilerplate1-1.onrender.com/api/v1/products')
 
   return (
     <div className="frst-chld">
@@ -24,6 +26,7 @@ const Deposito = () => {
                 {arrayLocals.map(item=>  <LocalRender key={item.id} url={item.img}/> )}
             </div>
           <div className='flex align-cntr'>
+{/* Block 4 cambiar */}
             <div className="block4 flex align-cntr">
               <img src={arrayLocals[2].img} className='img-selected'/>
               <label>
@@ -35,6 +38,7 @@ const Deposito = () => {
               </label>
             </div>
             </div>
+{/* Block 5 cambiar */}
           <div className='flex align-cntr'>
             <Pedido classes={'block5'}/>
           </div>

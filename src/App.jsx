@@ -1,38 +1,40 @@
+// Importaciones 💥
 import './App.css'
+import data from './jsonDataGridCards.js';
+import React, {useEffect} from 'react';
+// Funcionalidades 💯
 import { Routes, Route} from 'react-router-dom';
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { setIsLoadingGlobal } from "./store/slices/isLoading.jsx"
+// Componentes 💢
 import Dashboard from './components/Dashboard.jsx'
 import Deposito from './components/Deposito.jsx';
 import Productos from './components/Productos.jsx';
 import Local from './components/Local.jsx';
 
 
+
 function App() {
-  // A eliminar 🉐
-  const data= [
-    {
-      img: 'https://cdn-icons-png.flaticon.com/512/410/410734.png',
-      title: 'Locales',
-      description: 'Sin piedad dejas atrás un séquito de vana idolatría',
-      link: '/local'
-    },
-    {
-      img: 'https://cdn-icons-png.flaticon.com/512/3082/3082704.png',
-      title: 'Productos & Stock',
-      description: 'Ya sé, ya sé, cuál es, ya sé',
-      link: '/productos'
-    },
-    {
-      img: 'https://cdn-icons-png.flaticon.com/512/1606/1606957.png',
-      title: 'Depósito',
-      description: 'Ya sé, que el camino a la fama, no significa nada',
-      link: '/deposito'
-    }]
+  const loaderSpinner = useSelector(state=>state.isLoading)
+  const dispatch = useDispatch()
+  const handleClick = ()=> {
+    console.log('algo pasa')
+    dispatch(setIsLoadingGlobal(!loaderSpinner));
+    // console.log(loaderSpinner + 'Otra vez mi boca insensata')
+  }
+ 
+  useEffect(() => {
+    // console.log(loaderSpinner + 'vuelve a caer')
+  }, [handleClick])
+  
+
 
   return (
     <div className='App'>
       <header>
-        <nav className='flex drctn-rw one-align'>
-          <a href='#' className='a-main-logo'>
+        <nav className='flex drctn-rw align-strt-cntr'>
+          <a href='#' className='flex a-main-logo'>
             <img src='https://www.losnotables.com.ar/wp-content/themes/notables-theme/archivos/img/logo-los-notables.png' className='main-logo'/>
           </a>
           <label htmlFor= 'brgr-menu' className='checkbtn'>
@@ -44,12 +46,14 @@ function App() {
              </div>
           </label>
           <input type='checkbox' id='brgr-menu'/>
-          <ul className='flex drctn-rw one-align items'>
+          <ul className='flex drctn-rw align-strt-cntr items'>
             <li>
-              <a href='#'>Home</a>
+              <a href='#'>{loaderSpinner ? <img className='loader' src='https://www.wpfaster.org/wp-content/uploads/2013/06/circle-loading-gif.gif'/>: 'Home'}</a>
             </li>
             <li>
-              <a href='#'>Bar</a>
+              <a href='#'>
+                Bar
+              </a>
             </li>
             <li>
               <a href='#'>Lis</a>
@@ -59,12 +63,13 @@ function App() {
             </li>
             <li>
               <a href='#'>Maggi</a>
+              <button onClick={()=> handleClick()}>Vutton</button>
             </li>
           </ul>
-          
         </nav>
       </header>
-      <Routes className='frst-chld'>
+
+      <Routes>
         <Route path='/' element={<Dashboard data={data}/>}/>
         <Route path='/deposito' element={<Deposito/>}/>
         <Route path='/productos' element={<Productos/>}/>
