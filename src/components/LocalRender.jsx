@@ -2,12 +2,13 @@ import './stylesheets/localRender.css'
 import './stylesheets/globalStyles.css'
 import React from 'react'
 
-const LocalRender = ({url}) => {
-  // El checkbox no funcionó, es complicado porque son componentes. Capaz pasar un dato como parámetro,
-  // lo cual disminuye su escalabilidad
+const LocalRender = ({item, onClick}) => {
+  const handleClick = () => {
+    onClick(item); // Llama a la función onClick pasando el id como argumento
+  };
   return (
-    <div className='img-cntnr flex align-cntr'>
-        <img href='image' src={url} className='local-img-wdth'/>
+    <div onClick={handleClick} className='img-cntnr flex align-cntr'>
+        <img alt='image' src={item.img} className='local-img-wdth'/>
     </div>
   )
 }

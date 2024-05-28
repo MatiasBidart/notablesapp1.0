@@ -120,5 +120,6 @@ li {
   border-radius: 3px;
 }
 .loader{
-  width: 8rem;
+  width: 4rem;
+  margin: 4rem;
 }

@@ -5,6 +5,7 @@
     border-radius: 3rem;
     background-color: rgb(55, 56, 53, 0.1);
     cursor: pointer;
+    transition: .3s ease all;
 }
 .local-slct{
     width: 10rem;

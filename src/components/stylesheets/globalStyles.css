@@ -1,3 +1,6 @@
+.dsply-nn{
+  display: none;
+}
 .grd-no-gap{
   gap: 0;
 }
@@ -7,13 +10,33 @@
 .img-selected{
     width: 6rem;
 }
+.img-selected-input{
+  width: 4rem;
+}
+.filter-dv{
+  max-width: 60%;
+  border-radius: 2rem;
+}
+.filter-dv:hover{
+  background-color: rgb(55, 56, 53, 0.2);
+  transition: .3s ease all;
+}
+.button-add{
+    width: 5rem;
+    background-color: rgba(37, 37, 37, 0.267);
+    border-radius: 4rem;
+    height: 4rem;
+}
 .block4{
   border-radius: 8px;
   background-color: rgb(55, 56, 53, 0.2);
   width: 80%;
   height: 6rem;
   /* cambiar height- no es global, el 6rem le sirve al block 4 de Deposito */
+}
+.pddng-3rem{
   padding: 3rem;
+
 }
 .block5{
   width: 90%;
@@ -31,6 +54,15 @@
 .block7{
   height: 4rem;
 }
+.block8{
+  width: 100%;
+  border-radius: 0.5rem;
+  border-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(243, 243, 242, 0.473);
+  height: auto;
+  text-align: center;
+}
+
 .grid-dual{
   grid-template-columns: 50% 50%;
 }
@@ -43,4 +75,111 @@
 .wht-text{
   color: white;
 }
+.jstfy-itms-cntr{
+  justify-items: center;
+}
+.category-slct{
+  max-width: 4rem;
+}
+.proof{
+  background-color: rgba(131, 130, 130, 0.2);
+  font-weight: bold;
+  color: dimgrey;
+}
+.fltr-icon{
+  width: 1rem;
+  margin: 0.2rem;
+}
+.mrgn-2rem{
+  padding-right: 2rem;
+}
+.fltr-dv:hover{
+  background-color: rgba(0, 0, 0, 0.25);
+}
+.block10{
+  height: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+.ctgry{
+  border-radius: 1rem;
+  background-color: rgba(169, 169, 169, 0.253);
+  margin: 0rem 1rem;
+  width: 8rem;
+  cursor: pointer;
+}
+.slctd{
+  border-radius: 1rem;
+  background-color: darkgray;
+  margin: 0rem 1rem;
+  /* margin-bottom: 0.5rem; */
+  width: 8rem;
+  transition: .3s ease all;
+}
+.dsply-nn{
+  display: none;
+}
+.block11{
+  border: 2px solid rgba(0, 0, 0, 0.356);
+  border-radius: 3px;
+  cursor: pointer;
+  height: 4rem;
+  max-width: 4rem;
+  margin-left: 2rem;
+  overflow: hidden;
+}
+.block11:hover{
+  background-color: rgba(0, 0, 0, 0.356);
+  border-radius: 6px;
+  transition: 2s ease all;
+}
+/* -------------------------- */
+.input-container {
+  position: relative;
+}
 
+.custom-input {
+  border: none;
+  border-bottom: 2px solid gray;
+  outline: none;
+  background-color: transparent;
+  max-width: 10rem;
+  padding-bottom: 5px;
+  color: black; /* Color del texto */
+  transition: border-bottom-color 0.3s ease; /* Animación de transición para el color de la línea */
+  height: 2.5rem;
+}
+
+.custom-input:focus {
+  border-bottom-color:cornflowerblue; /* Color azul cuando está seleccionado */
+}
+
+.imagenproof{
+  width: 100%;
+  position: relative;
+}
+.divproof:hover{
+  background-color: rgba(245, 10, 10, 0.356);
+  border-radius: 6px;
+  transition: 2s ease all;
+  width: 100%;
+  height: 100%;
+  cursor: cell;
+}
+.block12{
+  max-width: 6rem;
+  background-color: rgba(0, 139, 139, 0.363);
+  border-radius: 2rem;
+  height: 4rem;  
+}
+.input-date{
+  max-width: 10rem;
+  height: 2rem;
+  margin: 2rem;
+}
+.margin-cntnr{
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}

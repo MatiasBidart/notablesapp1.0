@@ -1,8 +1,6 @@
 import './stylesheets/dashboard.css'
 import React from 'react'
 import GridCard from './GridCard'
-import TestingData from '../TestingData'
-
 // import TDD from './TDD'
 
 
@@ -23,7 +21,6 @@ const Dashboard = ({data}) => {
         <GridCard key={'card3'} data={data[2]}/>
       </div>
       <div>
-        <TestingData/>
         {/* <TDD>
           <h2>Hola desde el Dashborad</h2>
           <h5>hacia el modal</h5>

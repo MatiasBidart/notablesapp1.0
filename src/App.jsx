@@ -4,31 +4,16 @@ import data from './jsonDataGridCards.js';
 import React, {useEffect} from 'react';
 // Funcionalidades 💯
 import { Routes, Route} from 'react-router-dom';
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
-import { setIsLoadingGlobal } from "./store/slices/isLoading.jsx"
 // Componentes 💢
 import Dashboard from './components/Dashboard.jsx'
 import Deposito from './components/Deposito.jsx';
 import Productos from './components/Productos.jsx';
 import Local from './components/Local.jsx';
+import Formu from './components/Form.jsx'
 
 
 
 function App() {
-  const loaderSpinner = useSelector(state=>state.isLoading)
-  const dispatch = useDispatch()
-  const handleClick = ()=> {
-    console.log('algo pasa')
-    dispatch(setIsLoadingGlobal(!loaderSpinner));
-    // console.log(loaderSpinner + 'Otra vez mi boca insensata')
-  }
- 
-  useEffect(() => {
-    // console.log(loaderSpinner + 'vuelve a caer')
-  }, [handleClick])
-  
-
 
   return (
     <div className='App'>
@@ -48,12 +33,10 @@ function App() {
           <input type='checkbox' id='brgr-menu'/>
           <ul className='flex drctn-rw align-strt-cntr items'>
             <li>
-              <a href='#'>{loaderSpinner ? <img className='loader' src='https://www.wpfaster.org/wp-content/uploads/2013/06/circle-loading-gif.gif'/>: 'Home'}</a>
+              <a href='#'>Home</a>
             </li>
             <li>
-              <a href='#'>
-                Bar
-              </a>
+              <a href='#'>Bar</a>
             </li>
             <li>
               <a href='#'>Lis</a>
@@ -63,7 +46,6 @@ function App() {
             </li>
             <li>
               <a href='#'>Maggi</a>
-              <button onClick={()=> handleClick()}>Vutton</button>
             </li>
           </ul>
         </nav>
@@ -74,6 +56,7 @@ function App() {
         <Route path='/deposito' element={<Deposito/>}/>
         <Route path='/productos' element={<Productos/>}/>
         <Route path='/local' element={<Local/>}/>
+        <Route path='/form' element={<Formu/>}/>
       </Routes>
     </div>
   )

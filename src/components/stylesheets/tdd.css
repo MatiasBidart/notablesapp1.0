@@ -11,7 +11,7 @@
     justify-content: center;
 }
 .contenedor-modal{
-    width: 500px;
+    min-width: 500px;
     min-height: 100px;
     background-color: antiquewhite;
     position: relative;

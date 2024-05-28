@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 // por ahora lo manejaremos así
-export function useAPI (URL) {
+export function getAPI (URL) {
     const [data, setData] = useState(null)
     useEffect(() => {
         axios.get(URL)
@@ -24,10 +24,10 @@ export function postAPI (URL, body) {
     return data;
 }
 
-export function patchAPI (URL, id) {
+export function patchAPI (URL, body) {
     const [data, setData] = useState(null)
     useEffect(() => {
-        axios.patch(URL)
+        axios.patch(URL,body)
         .then(response => setData(response.data))
         .catch(err => console.log(err.message))
     }, [])
