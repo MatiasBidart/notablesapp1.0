@@ -19,7 +19,7 @@ import { setIsLoadingGlobal } from '../store/slices/isLoading.jsx'
 const Deposito = () => {
 const [localRender, setLocalRender] = useState(localData[0])
 const [pedidoRender, setPedidoRender] = useState(null)
-const [date, setDate] = useState('2024-03-19')
+const [date, setDate] = useState('2024-06-21')
 const loaderSpinner = useSelector(state=>state.isLoading)
 const handleClick = (item) => {
   setLocalRender(item)

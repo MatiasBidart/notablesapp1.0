@@ -7,11 +7,21 @@ import axios from 'axios'
 import Container from './Container'
 import RegistroList from './RegistroList';
 
+// 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️
+import TDD from './TDD';
+// 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️
+
 const LocalView = ({ setProductRegister, onClickFromInput }) => {
 const [productList,setProductList] = useState(null)
 const [productName, setProductName] = useState(null)
+// 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️
+const [modal, setModal] = useState(false)
+// 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️
+
 const dispatch = useDispatch()
 const loaderSpinner = useSelector(state=>state.isLoading)
+
+
   useEffect(() => {
     if(!productList) {
       dispatch(setIsLoadingGlobal(true))
@@ -22,6 +32,8 @@ const loaderSpinner = useSelector(state=>state.isLoading)
       .finally(()=> dispatch(setIsLoadingGlobal(false)))
     }
   }, [])
+
+
   const handleCategoryId = (id)=> {
     dispatch(setIsLoadingGlobal(true))
     const dynamicURL = `https://notables-backend.onrender.com/api/v1/products/category/${id}` 
@@ -36,6 +48,17 @@ console.log('🎈', setProductRegister)
 
   return (
     <div className='frst-chld'>
+{/* 
+ 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️ */}
+ {       
+  modal ?<TDD>
+          <h2>Hola desde el Dashborad</h2>
+          <h5>hacia el modal</h5>
+        </TDD>
+        : null
+  }
+{/* 
+ 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️ */}
       <div className='input-container margin-cntnr'>
       <input
       type="text"
@@ -49,7 +72,7 @@ console.log('🎈', setProductRegister)
         .filter(product => product.name.toLowerCase().includes(productName.toLowerCase()))
         .map(filteredProduct => (
             // Aquí renderizas los elementos filtrados
-            <div className='flex align-cntr filter-dv crsr-pointr' key={filteredProduct.id} onClick={()=> onClickFromInput(filteredProduct)}>
+            <div className='flex align-cntr filter-dv crsr-pointr' key={filteredProduct.id}>
                 {/* Renderizar detalles del producto */}
                 <img className='img-selected-input' src={filteredProduct.img}/>
                 <h5>{filteredProduct.name}</h5>

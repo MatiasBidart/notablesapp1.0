@@ -1,7 +1,7 @@
 import './stylesheets/dashboard.css'
 import React from 'react'
 import GridCard from './GridCard'
-// import TDD from './TDD'
+import TDD from './TDD'
 
 
 const Dashboard = ({data}) => {
@@ -21,10 +21,10 @@ const Dashboard = ({data}) => {
         <GridCard key={'card3'} data={data[2]}/>
       </div>
       <div>
-        {/* <TDD>
+        <TDD>
           <h2>Hola desde el Dashborad</h2>
           <h5>hacia el modal</h5>
-        </TDD> */}
+        </TDD>
       </div>
     </section>
     </div>
