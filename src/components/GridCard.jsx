@@ -1,25 +1,26 @@
-import './stylesheets/gridCard.css'
-import './stylesheets/globalStyles.css'
-import React from 'react'
+import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './stylesheets/gridCard.css'; // Asegúrate de importar el archivo CSS específico para GridCard
 
-
-const GridCard = ({data}) => {
-
+const GridCard = ({ data }) => {
   return (
-    <div className="grid grd-crd grd-no-gap">
-        <div>
-        <NavLink to={data.link}>
-          <section className='flex align-cntr sctn-icon'>
-            <img className='grd-crd-icon' src={data.img}/>
+    <NavLink to={data.link}>
+    <div id='grid' className="grid grd-crd grd-no-gap">
+      <div className='card'>
+          <section className='flex align-cntr sctn-icon img-container'>
+            <div className='gradient-overlay'></div>
+            <img className='grd-crd-image' src={data.img} alt={data.title} onError={(e) => { e.target.style.display = 'none' }}/>
           </section>
-        </NavLink>
+        <div className="icon-overlay">
+          <img src={data.icon} alt={data.title} onError={(e) => { e.target.style.display = 'none' }}/>
         </div>
-        <div>
-          <h5>{data.title}</h5>
+        <div className='flex align-cntr'>
+          <h4>{data.title}</h4>
         </div>
+      </div>
     </div>
-  )
-}
+        </NavLink>
+  );
+};
 
-export default GridCard
+export default GridCard;

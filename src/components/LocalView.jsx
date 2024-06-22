@@ -9,16 +9,27 @@ import RegistroList from './RegistroList';
 
 // 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️
 import TDD from './TDD';
+import { setModalState } from '../store/slices/modalState';
 // 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️
 
 const LocalView = ({ setProductRegister, onClickFromInput }) => {
 const [productList,setProductList] = useState(null)
 const [productName, setProductName] = useState(null)
 // 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️
-const [modal, setModal] = useState(false)
-// 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️
+const dispatch = useDispatch();
 
-const dispatch = useDispatch()
+const [product, setProduct] = useState(null)
+const setModalFunction = (filteredProduct) => {
+  dispatch(setModalState(true))
+  setProduct(filteredProduct);
+}
+const handleClick = (product) => {
+  onClickFromInput(product);
+  dispatch(setModalState(false));
+
+}
+// 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️
+const modalState = useSelector(state=>state.modalState)
 const loaderSpinner = useSelector(state=>state.isLoading)
 
 
@@ -42,23 +53,23 @@ const loaderSpinner = useSelector(state=>state.isLoading)
     .catch(err => console.log(err.message))
     .finally(dispatch(setIsLoadingGlobal(false)))
   }
-console.log('🎈', setProductRegister)
-
 
 
   return (
     <div className='frst-chld'>
-{/* 
- 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️ */}
+
+
  {       
-  modal ?<TDD>
-          <h2>Hola desde el Dashborad</h2>
-          <h5>hacia el modal</h5>
+  modalState ?<TDD>
+          <h2>{product.name}</h2>
+          <img className='img-selected-input' src={product.img}/>
+          <h5>Stock: {product.stock}</h5>
+          <button onClick={()=> handleClick(product)}> Enviar </button>
         </TDD>
         : null
   }
-{/* 
- 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️ */}
+
+
       <div className='input-container margin-cntnr'>
       <input
       type="text"
@@ -76,7 +87,7 @@ console.log('🎈', setProductRegister)
                 {/* Renderizar detalles del producto */}
                 <img className='img-selected-input' src={filteredProduct.img}/>
                 <h5>{filteredProduct.name}</h5>
-                <div className='flex align-cntr crsr-pointr button-add' onClick={()=> onClickFromInput(filteredProduct)}>+</div>
+                <div className='flex align-cntr crsr-pointr button-add' onClick={()=> {setModalFunction(filteredProduct)}}>+</div>
                 {/* Otros detalles del producto */}
             </div>
         )) 
@@ -95,7 +106,7 @@ console.log('🎈', setProductRegister)
             }
         </div>
         </section>
-    </div>
+        </div>
   )
 }
 

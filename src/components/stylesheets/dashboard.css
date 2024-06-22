@@ -19,6 +19,9 @@
 }
 
 .grd-clmns-rspnsv{
-  grid-auto-rows: 16rem;
+  grid-auto-rows: auto;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+.welcome-icon{
+  width: 10rem;
 }

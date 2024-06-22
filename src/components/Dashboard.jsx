@@ -2,9 +2,11 @@ import './stylesheets/dashboard.css'
 import React from 'react'
 import GridCard from './GridCard'
 import TDD from './TDD'
+import { useSelector } from 'react-redux'
 
 
 const Dashboard = ({data}) => {
+  const modalState = useSelector(state=>state.modalState)
 
 
   return (
@@ -20,12 +22,17 @@ const Dashboard = ({data}) => {
         <GridCard key={'card2'} data={data[1]}/>
         <GridCard key={'card3'} data={data[2]}/>
       </div>
-      <div>
+   
+      {  modalState ?     
         <TDD>
-          <h2>Hola desde el Dashborad</h2>
-          <h5>hacia el modal</h5>
-        </TDD>
-      </div>
+          <h2><i>Bienvenido</i> al Sistema de Prueba</h2>
+          <img className="welcome-icon" src="https://integrait.com.mx/wp-content/uploads/2024/03/iit-software-1-1.png" alt="welcome-icon" />
+          <h4>Este sistema mínimo permite realizar algunas de las operaciones de gestión en producción.</h4>
+          <h5>Esta versión acotada permite operar el sistema inicial sobre el que se construyó</h5>
+        </TDD> 
+        : null
+        }
+
     </section>
     </div>
   )
