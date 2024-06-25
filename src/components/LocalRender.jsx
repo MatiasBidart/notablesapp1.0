@@ -4,7 +4,7 @@ import React from 'react'
 
 const LocalRender = ({item, onClick}) => {
   const handleClick = () => {
-    onClick(item); // Llama a la función onClick pasando el id como argumento
+    onClick(item); // Llamo a la función onClick pasando el id como argumento
   };
   return (
     <div onClick={handleClick} className='img-cntnr flex align-cntr'>

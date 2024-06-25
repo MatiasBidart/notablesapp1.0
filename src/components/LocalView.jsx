@@ -6,29 +6,29 @@ import { setIsLoadingGlobal } from "../store/slices/isLoading";
 import axios from 'axios'
 import Container from './Container'
 import RegistroList from './RegistroList';
-
-// 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️
 import TDD from './TDD';
 import { setModalState } from '../store/slices/modalState';
-// 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️
 
 const LocalView = ({ setProductRegister, onClickFromInput }) => {
 const [productList,setProductList] = useState(null)
 const [productName, setProductName] = useState(null)
-// 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️
 const dispatch = useDispatch();
 
 const [product, setProduct] = useState(null)
+const [productQuantity, setProductQuantity] = useState(null)
 const setModalFunction = (filteredProduct) => {
   dispatch(setModalState(true))
   setProduct(filteredProduct);
 }
-const handleClick = (product) => {
-  onClickFromInput(product);
+const handleClick = (productId, productQuantity) => {
   dispatch(setModalState(false));
+  const data = {
+    productId: productId,
+    productQuantity: productQuantity
+  }
+  onClickFromInput(data);
 
 }
-// 👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️👷🏽‍♂️
 const modalState = useSelector(state=>state.modalState)
 const loaderSpinner = useSelector(state=>state.isLoading)
 
@@ -64,7 +64,13 @@ const loaderSpinner = useSelector(state=>state.isLoading)
           <h2>{product.name}</h2>
           <img className='img-selected-input' src={product.img}/>
           <h5>Stock: {product.stock}</h5>
-          <button onClick={()=> handleClick(product)}> Enviar </button>
+          <input
+            type="text"
+            className="custom-input text-input"
+            placeholder="Nombre de producto..."
+            onChange={e => setProductQuantity(e.target.value)}
+          />
+          <button onClick={()=> handleClick(product.id, productQuantity)}> Enviar </button>
         </TDD>
         : null
   }
@@ -82,16 +88,17 @@ const loaderSpinner = useSelector(state=>state.isLoading)
       productList
         .filter(product => product.name.toLowerCase().includes(productName.toLowerCase()))
         .map(filteredProduct => (
-            // Aquí renderizas los elementos filtrados
             <div className='flex align-cntr filter-dv crsr-pointr' key={filteredProduct.id}>
-                {/* Renderizar detalles del producto */}
                 <img className='img-selected-input' src={filteredProduct.img}/>
                 <h5>{filteredProduct.name}</h5>
                 <div className='flex align-cntr crsr-pointr button-add' onClick={()=> {setModalFunction(filteredProduct)}}>+</div>
-                {/* Otros detalles del producto */}
             </div>
         )) 
-    : "Busca el producto por su nombre..."}
+    : <div>
+      <img className="welcome-icon" src="https://integrait.com.mx/wp-content/uploads/2024/03/iit-software-1-1.png" alt="welcome-icon" />
+      <h2>Agregar productos al pedido</h2>
+      <h5>Busca el producto por su nombre...</h5>
+      </div>}
       </div>
       </div>
       <section className='flex align-cntr'>
@@ -100,7 +107,7 @@ const loaderSpinner = useSelector(state=>state.isLoading)
           <img className='loader' src='https://www.wpfaster.org/wp-content/uploads/2013/06/circle-loading-gif.gif'/>
            : <Container handleCategoryId={handleCategoryId}>
             {
-              setProductRegister ? setProductRegister.map(item => <RegistroList key={item.id} data={{name: item.name, img: item.img, firstValue: item.stock, endpoint: `https://notables-backend.onrender.com/api/v1/products/${item.id}`}}/>) : null 
+              setProductRegister ? setProductRegister.map(item => <RegistroList key={item.product.id} data={{name: item.product.name, img: item.product.img, firstValue: item.quantityAsked, endpoint: `https://notables-backend.onrender.com/api/v1/products/${item.product.id}`}}/>) : null 
             }
            </Container>
             }

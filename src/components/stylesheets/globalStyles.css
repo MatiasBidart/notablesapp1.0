@@ -31,7 +31,7 @@
   border-radius: 8px;
   background-color: rgb(55, 56, 53, 0.2);
   width: 80%;
-  height: 6rem;
+  min-height: 6rem;
   /* cambiar height- no es global, el 6rem le sirve al block 4 de Deposito */
 }
 .pddng-3rem{
@@ -121,20 +121,8 @@
 .dsply-nn{
   display: none;
 }
-.block11{
-  border: 2px solid rgba(0, 0, 0, 0.356);
-  border-radius: 3px;
-  cursor: pointer;
-  height: 4rem;
-  max-width: 4rem;
-  margin-left: 2rem;
-  overflow: hidden;
-}
-.block11:hover{
-  background-color: rgba(0, 0, 0, 0.356);
-  border-radius: 6px;
-  transition: 2s ease all;
-}
+
+
 /* -------------------------- */
 .input-container {
   position: relative;
@@ -168,12 +156,7 @@
   height: 100%;
   cursor: cell;
 }
-.block12{
-  max-width: 6rem;
-  background-color: rgba(0, 139, 139, 0.363);
-  border-radius: 2rem;
-  height: 4rem;  
-}
+
 .input-date{
   max-width: 10rem;
   height: 2rem;
@@ -188,4 +171,8 @@
 }
 .overlying-z{
   z-index: 20;
+}
+.text-input{
+  margin-bottom: 1rem;
+  text-align: center;
 }

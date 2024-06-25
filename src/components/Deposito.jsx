@@ -28,7 +28,7 @@ const handleSelect = (selectedValue) => {
   const selectedItem = JSON.parse(selectedValue);
   handleClick(selectedItem);
 };
-// --------INTRUDER-----------
+
 const dispatch = useDispatch();
   useEffect(() => {
     const dynamicURL = 'https://notables-backend.onrender.com/api/v1/pedido/local';
@@ -39,17 +39,13 @@ const dispatch = useDispatch();
         {localId: localRender.id, date: date}
       )
       )
-      .then(console.log('🎎 EJECUT!'))
+      .then(console.log('🎎 EJECUT!', date, localRender.id, localRender.name))
       .catch(err => console.log(err.message))
   }, [localRender, date])
   
-   
-// --------INTRUDER-----------
-
-// --------INTRUDER-----------
-const pedido= useSelector(state => state.infoSlice); // Selector para acceder a los productos almacenados en el estado
+const pedido= useSelector(state => state.infoSlice);
+console.log(pedido)
 const pedidoId = pedido ? pedido.id : null;
-
 useEffect(() => {
   if (pedidoId) {
     const dynamicURL = `https://notables-backend.onrender.com/api/v1/pedido/${pedidoId}` 
@@ -57,11 +53,10 @@ useEffect(() => {
     .then(data => setPedidoRender(data.data))
     .catch(err => console.log(err.message))
   } else {
-    console.log('no hay data che')
+    console.log('Error: no hay data; reintentar 🧉')
     setPedidoRender(null)
   }
 }, [pedidoId])
-// Prueba china 🎎🎎🎎
 
 const handleCategoryId = (id)=> {
   dispatch(setIsLoadingGlobal(true))
@@ -78,9 +73,6 @@ const handleCategoryId = (id)=> {
 }
 
 
-// -------------WASTECAN-----------
-// TODO PARECE FUNCIONAR DE MARAVILLA 👟
-// -------------WASTECAN-----------
 
   return (
     <div className="frst-chld">
@@ -89,7 +81,6 @@ const handleCategoryId = (id)=> {
                 {localData.map(item=>  <LocalRender key={item.id} item={item} onClick={handleClick}/> )}
             </div>
           <div className='flex align-cntr'>
-{/* Block 4 cambiar */}
             <div className="block4 pddng-3rem flex align-cntr">
               <img src={localRender.img} className='img-selected'/>
               <label>
@@ -101,7 +92,6 @@ const handleCategoryId = (id)=> {
               <input type='date' min='2024-03-19' className='input-date' onChange={(event) => setDate(event.target.value)}/>
             </div>
             </div>
-{/* Block 5 cambiar */}
           {/* <TDD> */}
           <div className='flex align-cntr block9'>
           { loaderSpinner ? 

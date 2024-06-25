@@ -22,14 +22,12 @@ useEffect(() => {
     axios.get(URL)
     .then(data => setCategoryList(data.data))
     .catch(err => console.log(err.message))
-    .finally(console.log(categoryList))
 }, [])
 // ...............................................................................
 
 const selectCategory = (category) => {
   if (category === selectedCategory) {
-    setSelectedCategory(null); // Deseleccionar la categoría si ya está seleccionada
-    console.log('harvard')
+    setSelectedCategory(null);
   } else {
     setSelectedCategory(category);
     handleCategoryId(category.id);

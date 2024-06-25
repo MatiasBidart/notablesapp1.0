@@ -8,13 +8,12 @@ const TestDrivenDevelopment = ({children}) => {
   const dispatch = useDispatch();
   const closeModal = () => {
     dispatch(setModalState(false))
-    console.log('tellme')
   }
-  // const [modal, setModal] = useState(true)
+
   return (
     <>
-    {/* {modal ?  */}
-    <div className='overlay overlying-z'>
+
+    <div id='modal-frst-chld' className='overlay overlying-z'>
       <div className='contenedor-modal'>
         <div className='encabezado-modal'>
           <h3>Encabezado Modal</h3>
@@ -23,7 +22,7 @@ const TestDrivenDevelopment = ({children}) => {
         {children}
       </div>
     </div>
-    {/* : null} */}
+
     </>
   )
 }

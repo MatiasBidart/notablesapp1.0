@@ -14,7 +14,7 @@ const Dashboard = ({data}) => {
     <section id='grd-home' className='grid'>
       <div className='flex align-cntr'>
         <div className='frst-block flex align-cntr'>
-          En esta sección se van a renderizar los productos a reponer del stock! 🦺
+          Espacio está reservado para notificaciones 🦺
         </div>
       </div>
       <div className='grid grd-clmns-rspnsv'>

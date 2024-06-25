@@ -5,13 +5,21 @@ import './stylesheets/login.css'
 import React from 'react'
 import localData from '../jsonDataLocal.js'
 import LocalRender from './LocalRender.jsx'
-
 import { useDispatch, useSelector } from 'react-redux'
 import TDD from './TDD';
 import { setModalState } from '../store/slices/modalState';
+import { useRef } from 'react'
 
+const LocalSelect = ({onItemClick, onDateChange}) => {
+  const sliderRef = useRef(null);
 
-const LocalSelect = ({onItemClick}) => {
+   const handleScroll = (direction) => {
+     if (sliderRef.current) {
+       const scrollAmount = sliderRef.current.clientWidth;
+       sliderRef.current.scrollLeft += direction === 'left' ? -scrollAmount : scrollAmount;
+     }
+   };
+
   const dispatch = useDispatch();
   const modalState = useSelector(state=>state.modalState)
   const handleClick = () => {
@@ -42,12 +50,24 @@ const LocalSelect = ({onItemClick}) => {
       </section>
       <div className='flex align-cntr drctn-clmn'>
           <h4>Elegir fecha de pedido 📆</h4>
-          <input type='date' min='2024-03-19' className='input-date'/>
+          <input 
+          type='date' 
+          min='2024-03-19' 
+          className='input-date'
+          onChange={(e) => onDateChange(e.target.value)}
+          />
       </div>
-      <h4>Ejecutar método de Prueba 🔽</h4>
-         <div className="flex align-cntr">
+
+    <h4>Ejecutar método de Prueba 🔽</h4>
+      <div className="slider-container">
+        <button className="scroll-button left" onClick={() => handleScroll('left')}>‹</button>
+        <div className="slider" ref={sliderRef}>
+        <div className="flex align-cntr">
                 {localData.map(item=>  <LocalRender key={item.id} item={item} onClick={onItemClick}/> )}
           </div>
+        </div>
+        <button className="scroll-button right" onClick={() => handleScroll('right')}>›</button>
+      </div>
     </div>
   )
 }

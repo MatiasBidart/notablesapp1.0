@@ -1,0 +1,97 @@
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  
+  .slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .slider::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  
+  .slide {
+    min-width: 300px; /* Ajusta según el tamaño de tus elementos */
+    margin: 0 10px;
+  }
+  
+  .scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    width: 40px; /* Ajusta el tamaño del botón según sea necesario */
+    height: 40px; /* Ajusta el tamaño del botón según sea necesario */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  
+  .scroll-button.left {
+    left: 10px; /* Ajusta la distancia desde el borde izquierdo */
+  }
+  
+  .scroll-button.right {
+    right: 10px; /* Ajusta la distancia desde el borde derecho */
+  }
+  
+  .slider-container::before,
+  .slider-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    z-index: 5;
+    pointer-events: none; /* Permitir hacer clic a través del degradado */
+  }
+  
+  .slider-container::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  }
+  
+  .slider-container::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  }
+  
+  /* Media query para pantallas de más de 768px */
+  @media (min-width: 768px) {
+    .slider-container {
+      overflow: visible;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+      gap: 10px; /* Ajusta el espacio entre elementos */
+    }
+    .slider {
+      overflow: visible;
+      display: contents;
+    }
+    .slide {
+      margin: 0;
+      width: 100%;
+    }
+    .scroll-button {
+      display: none; /* Oculta los botones */
+    }
+    .slider-container::before,
+    .slider-container::after {
+      display: none; /* Oculta el degradado */
+    }
+  }
+  
+  

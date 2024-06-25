@@ -11,7 +11,6 @@ const RegistroList = ({data}) => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Valor del campo:', value);
   };
 
   

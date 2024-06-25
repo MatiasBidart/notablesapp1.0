@@ -11,8 +11,7 @@
     justify-content: center;
 }
 .contenedor-modal{
-    min-width: 500px;
-    min-height: 100px;
+    width: auto;
     background-color: antiquewhite;
     position: relative;
     border-radius: 5px;
@@ -48,4 +47,12 @@
 .boton-modal:hover{
     color: antiquewhite;
     background-color: brown;
+}
+#modal-frst-chld{
+    overflow: scroll;
+}
+@media (max-width: 768px){
+    #modal-frst-chld{
+        margin-top: var(--nav-height);
+    }
 }

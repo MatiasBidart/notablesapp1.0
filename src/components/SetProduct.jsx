@@ -46,7 +46,7 @@ const SetProduct = () => {
     }
 
   return (
-    <div className="block4 flex align-cntr mrgn-1rem-prdcts"> 
+    <div id='mutual-align' className="block4 flex mrgn-1rem-prdcts"> 
     <Formu handleImageUrl={handleImageUrl}/>
     <div className="input-container">
       <input
@@ -68,7 +68,7 @@ const SetProduct = () => {
       onChange={e => console.log(e.target.value)}
       />
     </div>
-    <div className='flex align-cntr crsr-pointr block12' onClick={()=> handleClick()}>Button</div>
+    <div className='flex align-cntr crsr-pointr block12' onClick={()=> handleClick()}><b>Enviar</b></div>
   </div>
   )
 }

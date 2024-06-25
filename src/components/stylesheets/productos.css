@@ -5,3 +5,44 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
+  .block11{
+    border: 2px solid rgba(0, 0, 0, 0.356);
+    border-radius: 3px;
+    cursor: pointer;
+    height: 4rem;
+    max-width: 4rem;
+    overflow: hidden;
+  }
+  .block11:hover{
+    background-color: rgba(0, 0, 0, 0.356);
+    border-radius: 6px;
+    transition: 2s ease all;
+  }
+  .block12{
+    max-width: 6rem;
+    background-color: rgba(0, 139, 139, 0.363);
+    border-radius: 2rem;
+    height: 4rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+#mutual-align{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+@media (min-width: 768px){
+    #mutual-align{
+       flex-direction: row;
+       align-items: center;
+       justify-content: center;
+    }
+    .block11{
+        margin-left: 2rem;
+    }
+    .block12{
+        margin-right: 2rem;
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+    }
+}

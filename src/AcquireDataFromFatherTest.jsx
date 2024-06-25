@@ -2,6 +2,8 @@
 import React, {useState} from 'react'
 // import { useAPI } from './useAPI'
 
+// En este componente se prueban los test
+
 const acquireDataFromFatherTest = ({respuesta}) => {
 
   
